@@ -184,7 +184,7 @@ function PromptToast(props: {
           >
             <>
               <div className={chatStyle["context-prompt"]}>
-                {context.map((c, i) => (
+                {context.map((c: Message, i: number)  => (
                   <div className={chatStyle["context-prompt-row"]} key={i}>
                     <select
                       value={c.role}
