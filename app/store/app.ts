@@ -478,8 +478,8 @@ export const useChatStore = create<ChatStore>()(
 
           for (let i = messagesDeepleaf.length - 1; i >= 0; i--) {
             const messageDeepleaf: Message = {
-              role: messagesDeepleaf[i].role,
               content: messagesDeepleaf[i].content,
+              role: messagesDeepleaf[i].role,
               date: "",
             };
 
