@@ -12,12 +12,20 @@ import { isMobileScreen, trimTopic } from "../utils";
 import Locale from "../locales";
 import { showToast } from "../components/ui-lib";
 
+export enum ChatCompletionResponseMessageRoleEnum {
+  User = "user",
+  Assistant = "assistant",
+  System = "system",
+}
+
 export type Message = ChatCompletionResponseMessage & {
   date: string;
   streaming?: boolean;
   isError?: boolean;
   id?: number;
+  role: ChatCompletionResponseMessageRoleEnum;
 };
+
 
 export function createMessage(override: Partial<Message>): Message {
   return {
