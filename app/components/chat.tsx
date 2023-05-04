@@ -1,6 +1,5 @@
 import { useDebouncedCallback } from "use-debounce";
 import { memo, useState, useRef, useEffect, useLayoutEffect } from "react";
-import { type ChatCompletionResponseMessage } from "openai";
 
 import SendWhiteIcon from "../icons/send-white.svg";
 import BrainIcon from "../icons/brain.svg";
@@ -73,13 +72,7 @@ export function Avatar(props: { role: Message["role"] }) {
 function exportMessages(messages: Message[], topic: string) {
   const mdText =
     `# ${topic}\n\n` +
-    (messages as (ChatCompletionResponseMessage & {
-      date: string;
-      streaming?: boolean;
-      isError?: boolean;
-      id?: number;
-      role: "user" | "assistant" | "system";
-    })[])
+    messages
       .map((m) => {
         return m.role === "user"
           ? `## ${Locale.Export.MessageFromYou}:\n${m.content}`
@@ -184,7 +177,7 @@ function PromptToast(props: {
           >
             <>
               <div className={chatStyle["context-prompt"]}>
-                {context.map((c: Message, i: number)  => (
+                {context.map((c, i)  => (
                   <div className={chatStyle["context-prompt-row"]} key={i}>
                     <select
                       value={c.role}
