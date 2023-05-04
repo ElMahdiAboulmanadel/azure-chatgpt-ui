@@ -472,7 +472,7 @@ export const useChatStore = create<ChatStore>()(
           context.push(memoryPrompt);
         }
 
-        const recentMessages = context.concat(exampleMessages, messages.slice(Math.max(0, n - config.historyMessageCount)));
+        const recentMessages = context.concat(messagesWithDate, messages.slice(Math.max(0, n - config.historyMessageCount)));
 
 
         //Add system prompt
