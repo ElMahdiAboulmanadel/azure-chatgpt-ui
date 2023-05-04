@@ -479,7 +479,10 @@ export const useChatStore = create<ChatStore>()(
           for (let i = messagesDeepleaf.length - 1; i >= 0; i--) {
             const messageDeepleaf: Message = {
               content: messagesDeepleaf[i].content,
-              role: messagesDeepleaf[i].role,
+              role: messagesDeepleaf[i].role === "user"
+      ? ChatCompletionResponseMessageRoleEnum.User
+      : ChatCompletionResponseMessageRoleEnum.Assistant,
+
               date: "",
             };
 
