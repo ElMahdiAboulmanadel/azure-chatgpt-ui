@@ -111,8 +111,6 @@ function PromptToast(props: {
   showToast?: boolean;
   showModal?: boolean;
   setShowModal: (_: boolean) => void;
-  messages: Message[];
-
 }) {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -177,7 +175,7 @@ function PromptToast(props: {
           >
             <>
               <div className={chatStyle["context-prompt"]}>
-                {context.map((c, i)  => (
+                {context.map((c, i) => (
                   <div className={chatStyle["context-prompt-row"]} key={i}>
                     <select
                       value={c.role}
