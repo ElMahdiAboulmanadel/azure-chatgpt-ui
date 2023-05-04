@@ -486,7 +486,12 @@ export const useChatStore = create<ChatStore>()(
               date: "",
             };
 
-            recentMessages.unshift(messageDeepleaf);
+            recentMessages.unshift({
+    content: messageDeepleaf.content,
+    role: messageDeepleaf.role as ChatCompletionResponseMessageRoleEnum,
+    date: "",
+  });
+
           }
         }
         
