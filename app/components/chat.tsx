@@ -42,10 +42,6 @@ import styles from "./home.module.scss";
 import chatStyle from "./chat.module.scss";
 
 import { Input, Modal, showModal, showToast } from "./ui-lib";
-interface Message {
-  content: string;
-  role: string;
-}
 
 const Markdown = dynamic(
   async () => memo((await import("./markdown")).Markdown),
