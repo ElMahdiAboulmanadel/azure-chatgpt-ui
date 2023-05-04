@@ -72,7 +72,13 @@ export function Avatar(props: { role: Message["role"] }) {
 function exportMessages(messages: Message[], topic: string) {
   const mdText =
     `# ${topic}\n\n` +
-    messages
+    (messages as (ChatCompletionResponseMessage & {
+      date: string;
+      streaming?: boolean;
+      isError?: boolean;
+      id?: number;
+      role: "user" | "assistant" | "system";
+    })[])
       .map((m) => {
         return m.role === "user"
           ? `## ${Locale.Export.MessageFromYou}:\n${m.content}`
