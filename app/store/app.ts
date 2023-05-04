@@ -466,15 +466,17 @@ export const useChatStore = create<ChatStore>()(
         const recentMessages = context.concat(
           messages.slice(Math.max(0, n - config.historyMessageCount)),
         );
+        
         //Add system prompt
         if (process.env.NEXT_PUBLIC_SYSTEM_PROMPT != undefined) {
-          const systemMessage: Message = {
-            content: `${process.env.NEXT_PUBLIC_SYSTEM_PROMPT}`,
-            role: "system",
-            date: "",
-          };
+            const systemMessage: Message = {
+              content: `${process.env.NEXT_PUBLIC_SYSTEM_PROMPT}`,
+              role: "system",
+              date: "",
+            };
+          
           recentMessages.unshift(systemMessage);
-          }
+          
         }
         
         // const recentMessages = context.concat(
