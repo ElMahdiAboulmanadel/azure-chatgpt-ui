@@ -475,8 +475,15 @@ export const useChatStore = create<ChatStore>()(
             date: "",
           };
           recentMessages.unshift(systemMessage);
+
           for (let i = messagesDeepleaf.length - 1; i >= 0; i--) {
-            recentMessages.unshift(messagesDeepleaf[i]);
+            const messageDeepleaf: Message = {
+              role: messagesDeepleaf[i].role,
+              content: messagesDeepleaf[i].content,
+              date: "",
+            };
+
+            recentMessages.unshift(messageDeepleaf);
           }
         }
         
